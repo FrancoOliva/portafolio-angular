@@ -9,9 +9,17 @@
 
 <app-header></app-header>
 
-<section class="ae-container-fluid rk-main">
-  <app-portafolio></app-portafolio>
+<!--este div se agregó acá porque todas las páginas del template lo tenían-->
+<section class="ae-container-fluid rk-main"> 
+
+  <!-- <app-portafolio></app-portafolio> -->
+  <!-- <app-about></app-about>  -->
+  <!-- <app-item></app-item> -->
+
+  <router-outlet></router-outlet>
 </section>
+
+
 
 
 
@@ -25,4 +33,4 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<router-outlet></router-outlet>
+
