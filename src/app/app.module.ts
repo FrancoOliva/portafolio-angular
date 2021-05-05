@@ -9,6 +9,10 @@ import { PortafolioComponent } from './pages/portafolio/portafolio.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ItemComponent } from './pages/item/item.component';
 
+import {HttpClientModule} from '@angular/common/http' // nos permite realizar peticiones HTTP : GET PUT DELETE etc
+// import { InfoPaginaService } from './services/info-pagina.service'; ---> comentamos el servicio porque lo vamos a utilizar de una forma diferente
+
+
 
 @NgModule({
   declarations: [
@@ -20,11 +24,19 @@ import { ItemComponent } from './pages/item/item.component';
     ItemComponent,
     
   ],
+
+  /** acá se importan los modulos */
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    
   ],
-  providers: [],
+  /** acá se importan los servicios */
+  providers: [
+    // InfoPaginaService
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
