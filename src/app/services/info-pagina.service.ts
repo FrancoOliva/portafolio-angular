@@ -32,7 +32,7 @@ export class InfoPaginaService {
     this.http.get('https://portafolio-angular-e320d-default-rtdb.firebaseio.com/equipo.json').subscribe( (respuesta:any) =>{
 
     this.equipo = respuesta;
-    console.log(this.equipo);
+    
     })
   }
 }
