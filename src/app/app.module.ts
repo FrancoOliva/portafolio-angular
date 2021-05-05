@@ -9,7 +9,8 @@ import { PortafolioComponent } from './pages/portafolio/portafolio.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ItemComponent } from './pages/item/item.component';
 
-import {HttpClientModule} from '@angular/common/http' // nos permite realizar peticiones HTTP : GET PUT DELETE etc
+import {HttpClientModule} from '@angular/common/http';
+import { SearchComponent } from './pages/search/search.component' // nos permite realizar peticiones HTTP : GET PUT DELETE etc
 // import { InfoPaginaService } from './services/info-pagina.service'; ---> comentamos el servicio porque lo vamos a utilizar de una forma diferente
 
 
@@ -22,6 +23,7 @@ import {HttpClientModule} from '@angular/common/http' // nos permite realizar pe
     PortafolioComponent,
     AboutComponent,
     ItemComponent,
+    SearchComponent,
     
   ],
 

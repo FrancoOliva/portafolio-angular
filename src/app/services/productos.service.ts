@@ -17,18 +17,16 @@ export class ProductosService {
   private cargarProductos(){
 
     this.http.get('https://portafolio-angular-e320d-default-rtdb.firebaseio.com/equipo/productos_idx.json').subscribe( (resp: any) => {
-
       this.productos = resp;
-      
-
-    setTimeout(() => {
-
-      this.cargando = false;
-      
-    }, 1000);
-
+      setTimeout(() => {
+        this.cargando = false;
+        
+      }, 1000);
       console.log(this.productos);
     })
+  }
 
+  getProducto(id: string){
+    return this.http.get('https://portafolio-angular-e320d-default-rtdb.firebaseio.com/equipo/productos/'+id+'.json');
   }
 }
