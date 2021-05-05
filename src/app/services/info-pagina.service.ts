@@ -10,7 +10,7 @@ export class InfoPaginaService {
   info: InfoPagina = {};
   cargada: boolean = false;
 
-  equipo: any[] = [];
+  equipo: any []= [];
 
   constructor( private http: HttpClient ) {     
     this.cargarInfo();
@@ -30,8 +30,9 @@ export class InfoPaginaService {
 
   private cargarEquipo(){
     this.http.get('https://portafolio-angular-e320d-default-rtdb.firebaseio.com/equipo.json').subscribe( (respuesta:any) =>{
-
-    this.equipo = respuesta;
+    
+      this.equipo = respuesta;
+    
     
     })
   }
