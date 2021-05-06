@@ -17,16 +17,24 @@ export class ProductosService {
 
   private cargarProductos(){
 
-    this.http.get('https://portafolio-angular-e320d-default-rtdb.firebaseio.com/productos_idx.json').subscribe( (resp: any) => {
+    // una promesa es algo asincrono nuevo del ecmascript6
+    // "yo necesito ejecutar cierto código hasta que esto se resuelva"
+    // las promesas adentro tienen un call back que reciben 2 argumentos
+    return new Promise<void> ( ( resolve, reject ) => { 
+
+      this.http.get('https://portafolio-angular-e320d-default-rtdb.firebaseio.com/productos_idx.json').subscribe( (resp: any) => {
       
-    this.productos = resp;
-      
-      setTimeout(() => {
-        this.cargando = false;
+      this.productos = resp;
+      this.cargando = false;
+
+      resolve();
         
-      }, 1000);
-      // console.log(this.productos);
-    })
+        
+      })
+
+      } )
+
+    
   }
 
   getProducto(id: string){
@@ -36,12 +44,35 @@ export class ProductosService {
 
   buscarProducto(termino: string){
 
-    // filter nos permite barrer a el arreglo y nos trae un nuevo arreglo
-    this.productosFiltrados = this.productos.filter( producto => {
-      return true;
+    if ( this.productos.length === 0){
+      // cargar productos
+      this.cargarProductos().then(()=>{
+        // este código se ejecuta después de tener los productos
+        // aplicar filtro
+        this.filtrarProductos( termino );
+      })
+    } else {
+      //aplicar filtro
+      this.filtrarProductos( termino );
+    }
 
-    })
+    
+  }
 
-    console.log(this.productosFiltrados);
+  private filtrarProductos( termino:string){
+    // console.log(this.productos);
+    this.productosFiltrados = [];
+
+    termino = termino.toLocaleLowerCase(); // lo pasamos a minúsculas
+    
+
+    this.productos.forEach( (producto) => {
+      const tituloLower = producto.titulo.toLocaleLowerCase();
+
+      if(producto.categoria.indexOf(termino) >= 0 || tituloLower.indexOf(termino) >= 0){
+        // si la categoría coincide agregamos el producto a productosFiltrados
+        this.productosFiltrados.push( producto );
+      }
+    });
   }
 }
